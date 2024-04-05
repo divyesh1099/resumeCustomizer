@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container mx-auto px-4">
+    <h1 class="text-xl font-bold my-4">User Profile</h1>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        
+        <h2 class="text-lg font-semibold mt-6">Education</h2>
+        {{ education_formset.management_form }}
+        {% for form in education_formset %}
+            <div class="border p-2 mt-2">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+
+        <h2 class="text-lg font-semibold mt-6">Experience</h2>
+        {{ experience_formset.management_form }}
+        {% for form in experience_formset %}
+            <div class="border p-2 mt-2">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+
+        <h2 class="text-lg font-semibold mt-6">Skills</h2>
+        {{ skill_formset.management_form }}
+        {% for skill_form in skill_formset %}
+            <div class="border p-2 mt-2">
+                {{ skill_form.as_p }}
+                {% if skill_form.instance.pk %}
+                    {{ skill_form.technical_skill_formset.management_form }}
+                    {% for tech_form in skill_form.technical_skill_formset %}
+                        <div class="border p-2 mt-2">
+                            {{ tech_form.as_p }}
+                        </div>
+                    {% endfor %}
+                    {{ skill_form.tool_formset.management_form }}
+                    {% for tool_form in skill_form.tool_formset %}
+                        <div class="border p-2 mt-2">
+                            {{ tool_form.as_p }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <h2 class="text-lg font-semibold mt-6">Projects</h2>
+        {{ project_formset.management_form }}
+        {% for project_form in project_formset %}
+            <div class="border p-2 mt-2">
+                {{ project_form.as_p }}
+                {% if project_form.instance.pk %}
+                    {{ project_form.technology_formset.management_form }}
+                    {% for technology_form in project_form.technology_formset %}
+                        <div class="border p-2 mt-2">
+                            {{ technology_form.as_p }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        {% endfor %}
+
+        <h2 class="text-lg font-semibold mt-6">Awards and Certifications</h2>
+        {{ award_and_certification_formset.management_form }}
+        {% for form in award_and_certification_formset %}
+            <div class="border p-2 mt-2">
+                {{ form.as_p }}
+            </div>
+        {% endfor %}
+        
+        <button type="submit" class="mt-4 inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Save All Changes
+        </button>
+    </form>
+</div>
+{% endblock %}

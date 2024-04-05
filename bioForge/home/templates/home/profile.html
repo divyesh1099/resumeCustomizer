@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="flex justify-center">
+  <div class="w-full max-w-2xl px-6 py-12 bg-white shadow-md overflow-hidden sm:rounded-lg">
+    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-8">Profile Details</h2>
+    
+    <div class="mb-4">
+      <h3 class="text-xl text-gray-600">Personal Information</h3>
+      <p class="text-gray-700"><strong>Name:</strong> {{ user.get_full_name }}</p>
+      <p class="text-gray-700"><strong>Email:</strong> {{ user.email }}</p>
+      <p class="text-gray-700"><strong>Phone:</strong> {{ user.profile.phone_number }}</p>
+      <!-- Add more fields as necessary -->
+    </div>
+    
+    <div class="mb-4">
+      <h3 class="text-xl text-gray-600">Education</h3>
+      {% for education in user.profile.education_set.all %}
+      <div class="border-t border-gray-200 pt-2 mt-2">
+        <p class="text-gray-700"><strong>Type:</strong> {{ education.get_type_display }}</p>
+        <p class="text-gray-700"><strong>College Name:</strong> {{ education.college_name }}</p>
+        <p class="text-gray-700"><strong>Years:</strong> {{ education.start_year }} - {{ education.end_year }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="mb-4">
+      <h3 class="text-xl text-gray-600">Experience</h3>
+      {% for experience in user.profile.experience_set.all %}
+      <div class="border-t border-gray-200 pt-2 mt-2">
+        <p class="text-gray-700"><strong>Role:</strong> {{ experience.role }}</p>
+        <p class="text-gray-700"><strong>Company:</strong> {{ experience.company_name }}</p>
+        <p class="text-gray-700"><strong>Duration:</strong> {{ experience.start_month_year }} - {{ experience.end_month_year }}</p>
+        <p class="text-gray-700"><strong>Description:</strong> {{ experience.description }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="mb-4">
+      <h3 class="text-xl text-gray-600">Skills</h3>
+      <p class="text-gray-700">{{ user.profile.skills }}</p>
+      <!-- Add more skill related content -->
+    </div>
+
+    <div class="flex justify-center mt-8">
+      <a href="{% url 'home:edit_profile' %}" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300">Edit Profile</a>
+    </div>
+  </div>
+</div>
+{% endblock content %}

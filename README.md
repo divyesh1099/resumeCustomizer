@@ -30,8 +30,8 @@ These instructions will get you a copy of the project up and running on your loc
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourgithubusername/resume-customizer.git
-cd resume-customizer
+git clone https://github.com/divyesh1099/resumeCustomizer.git
+cd resumeCustomizer
 ```
 
 2. **Setup a virtual environment (Optional)**

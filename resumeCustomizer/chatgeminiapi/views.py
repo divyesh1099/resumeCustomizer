@@ -2,7 +2,7 @@ from django.http import JsonResponse
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.csrf import csrf_exempt
 import json
-import google.generativeai as genai
+import google.generativeai as genai # type: ignore
 from .custom_gemini_api_key import GEMINI_API_KEY
 
 # Configure the API with your key

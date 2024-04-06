@@ -5,9 +5,11 @@ Resume Customizer is a Django-based application designed to help professionals t
 
 ## Features
 
-- **Profile Creation**: Users can create profiles to input their comprehensive professional details, including Education, Work Experience, Technical Skills, Projects, Awards, and Certifications.
-- **Customization Engine**: Enter the target company name and job description. Our tool uses Google's Gemini API to analyze and select the most relevant professional details for customization.
-- **Resume and Cover Letter Generation**: With the click of a button, generate, customize, view, and download your tailored resume and cover letter.
+- **Profile Management**: Users can create and manage a comprehensive profile including education, work experience, technical skills, projects, awards, and certifications.
+- **Intelligent Customization**: Users input the desired company name and job description, and our tool utilizes Google's Gemini API to select the most applicable professional details.
+- **Eligibility Check**: Before creating a customized resume, users can check their eligibility based on the job requirements.
+- **Custom Resume Generation**: Eligible candidates can generate and view a customized resume with relevant details highlighted.
+- **Responsive Design**: Built with a mobile-first approach, ensuring a seamless experience across all devices.
 
 ## Built With
 
@@ -109,9 +111,10 @@ Please ensure that your API key is kept confidential. Do not expose it in client
 
 ## Usage
 
-1. **Create Your Profile**: Navigate to the profile creation page and fill in your professional details.
-2. **Customize Your Resume/Cover Letter**: Enter the company name and job description for which you are applying, and click "Generate" to customize your resume and cover letter accordingly.
-3. **Download**: View the customized versions and download them directly from the site.
+1. **Profile Setup**: Fill in your professional details on the profile creation page.
+2. **Eligibility Check**: Enter the company name and job description to check if your profile meets the job requirements.
+3. **Generate Custom Resume**: If eligible, click on the "Generate Custom Resume" button to create a tailored resume.
+4. **Download**: Review and download the customized resume directly from the site.
 
 ## Contributing
 

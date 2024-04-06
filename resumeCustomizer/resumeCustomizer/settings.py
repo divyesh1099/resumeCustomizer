@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'workprofile',
     'chatgeminiapi',
     'corsheaders',
+    'resume',
 ]
 
 MIDDLEWARE = [

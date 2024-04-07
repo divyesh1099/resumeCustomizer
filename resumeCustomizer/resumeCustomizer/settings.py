@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'chatgeminiapi',
     'corsheaders',
     'resume',
+    'latexEditor',
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+# Define the path(s) to your static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # 'static' is the folder where you place your static files
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# If you're in production, you will also need to set STATIC_ROOT
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Uncomment if in production
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

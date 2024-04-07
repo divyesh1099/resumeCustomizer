@@ -23,4 +23,5 @@ urlpatterns = [
     path('resume/', include('resume.urls')),
     path('profile/', include('workprofile.urls')),
     path('chatgeminiapi/', include('chatgeminiapi.urls')),
+    path('latexEditor/', include('latexEditor.urls')),
 ]

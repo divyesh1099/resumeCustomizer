@@ -2,9 +2,19 @@
 {% load static %}
 {% block custom_styles %}
 <style>
-  .min-h-screen {
-      min-height: 100vh;
-  }
+    .min-h-screen {
+        min-height: 100vh;
+    }
+    .resize-handle {
+        background: #ccc; /* Light gray background */
+        cursor: ew-resize; /* Cursor indicates horizontal resizing */
+        width: 5px; /* Width of the resize handle */
+        height: 100%; /* Full container height */
+    }
+    /* Existing styles */
+    .min-h-screen {
+        min-height: 100vh;
+    }
 </style>
 {% endblock %}
 
@@ -16,20 +26,55 @@
         </button>
     </div>
     <div class="flex flex-1 overflow-hidden">
-        <div class="sidebar bg-gray-50 border-r border-gray-300 overflow-y-auto w-full md:w-1/4">
+        <div class="sidebar bg-gray-50 border-r border-gray-300 overflow-y-auto">
             <!-- Files will be listed here -->
             <p id="file_resume_cls" class="p-2 hover:bg-gray-200 cursor-pointer">resume.cls</p>
             <p id="file_resume_tex" class="p-2 hover:bg-gray-200 cursor-pointer">resume.tex</p>
         </div>
-        <div class="latex-editor flex-auto p-4 overflow-y-auto w-full md:w-1/2">
+
+        <div class="resize-handle"></div>
+
+        <div class="latex-editor flex-auto p-4 overflow-y-auto">
             <!-- LaTeX editor goes here -->
             <textarea id="latex-code" class="w-full h-full p-2 border border-gray-300 rounded" placeholder="Select a file to edit..."></textarea>
         </div>
-        <div class="compiled-result bg-white overflow-y-auto w-full md:w-1/4 p-4 border-l border-gray-300">
+
+        <div class="resize-handle"></div> 
+
+        <div class="compiled-result bg-white overflow-y-auto p-4 border-l border-gray-300">
             <!-- Rendered LaTeX will be displayed here -->
             <iframe id="latex-result" class="w-full h-full"></iframe>
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const handles = document.querySelectorAll('.resize-handle');
+
+    let startX, startWidth;
+
+    handles.forEach(handle => {
+        handle.addEventListener('mousedown', function(e) {
+            startX = e.clientX;
+            const sidebar = handle.previousElementSibling; // The element before the handle
+            const editor = handle.nextElementSibling; // The element after the handle
+            startWidth = sidebar.offsetWidth;
+
+            function mouseMoveHandler(e) {
+                const dx = e.clientX - startX;
+                sidebar.style.width = `${startWidth + dx}px`;
+            }
+
+            function mouseUpHandler() {
+                document.documentElement.removeEventListener('mousemove', mouseMoveHandler);
+                document.documentElement.removeEventListener('mouseup', mouseUpHandler);
+            }
+
+            document.documentElement.addEventListener('mousemove', mouseMoveHandler);
+            document.documentElement.addEventListener('mouseup', mouseUpHandler);
+        });
+    });
+});
+</script>
 <script src="{% static 'js/latexLogic.js' %}"></script>
 {% endblock %}

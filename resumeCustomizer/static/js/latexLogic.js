@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('recompileButton').addEventListener('click', function() {
         const code = editor.value;
-        fetch(`/compile`, {
+        fetch(`/latexEditor/compile/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

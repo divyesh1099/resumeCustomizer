@@ -26,9 +26,9 @@
                 </div>
                 <!-- secondary nav -->
                 <div class="hidden md:flex items-center space-x-1">
-                    <a href="{% url 'resume:index' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Resume</a>
-                    <a href="{% url 'home:index' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Cover Letter</a>
                     {% if user.is_authenticated %}
+                        <a href="{% url 'resume:index' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Resume</a>
+                        <a href="{% url 'home:index' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Cover Letter</a>
                         <a href="{% url 'workprofile:index' %}" class="py-5 px-3 text-gray-700 hover:text-gray-900">Profile</a>
                         <a href="{% url 'home:logout' %}" class="py-2 px-3 bg-red-500 text-white rounded hover:bg-red-600">Logout</a>
                     {% else %}
